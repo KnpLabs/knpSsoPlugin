@@ -15,7 +15,6 @@ class knpSsoFetcher
   
   public function fetch($ssoKey)
   {
-    print_r($this->options);
     $request = xmlrpc_encode_request($this->options['method'], array($ssoKey));
     $context = stream_context_create(array(
         'http' => array(

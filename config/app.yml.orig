@@ -1,0 +1,8 @@
+all:
+  knp_sso_plugin:
+    sso_plugin_signin_form: knpSsoFormSignin
+    sso_key_parameter: sso_key
+    sso_fetcher_class: knpSsoFetcher
+    sso_fetcher_options:
+      method: blibli.blabla
+      url: http://myurl/xmlrpc.php

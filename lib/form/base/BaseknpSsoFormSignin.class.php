@@ -8,6 +8,7 @@ class BaseknpSsoFormSignin extends BaseForm
   public function setup()
   {
     $ssoFetcher = $this->getOption('sso_fetcher');
+    $this->disableCSRFProtection();
     
     $this->setWidgets(array(
       'sso_key' => new sfWidgetFormInputHidden(),

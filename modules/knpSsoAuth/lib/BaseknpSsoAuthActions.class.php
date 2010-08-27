@@ -29,7 +29,7 @@ class BaseknpSsoAuthActions extends sfActions
       $this->form->bind(array('sso_key' => $request->getParameter($ssoKeyParameterName)));
       if ($this->form->isValid())
       {
-        $values = $this->form->getValues(); 
+        $values = $this->form->getValues();
         $this->getUser()->signin($values['user'], array_key_exists('remember', $values) ? $values['remember'] : false);
 
         // always redirect to a URL set in app.yml
@@ -38,6 +38,11 @@ class BaseknpSsoAuthActions extends sfActions
         $signinUrl = sfConfig::get('app_knp_sso_plugin_success_signin_url', $user->getReferer($request->getReferer()));
 
         return $this->redirect('' != $signinUrl ? $signinUrl : '@homepage');
+      }
+      else
+      {
+        echo $this->form;
+        return sfView::ERROR;
       }
     }
     else

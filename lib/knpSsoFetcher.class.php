@@ -15,7 +15,6 @@ class knpSsoFetcher
   
   public function fetch($ssoKey)
   {
-    print_r($this->options);
     $request = xmlrpc_encode_request($this->options['method'], array($ssoKey));
     $context = stream_context_create(array(
         'http' => array(
@@ -43,7 +42,8 @@ class knpSsoFetcher
     {
       if (sfConfig::get('sf_logging_enabled'))
       {
-        sfContext::getInstance()->getLogger()->warning('{knpSsoFetcher} '.$user['faultCode'].': '.$user['faultString']);
+        $exception = $user['faultCode'].': '.$user['faultString'];
+        sfContext::getInstance()->getLogger()->warning('{knpSsoFetcher} '.$exception);
       }
     }
     return $user;

@@ -29,9 +29,11 @@ class BaseknpSsoAuthActions extends sfActions
       $this->form->bind(array('sso_key' => $request->getParameter($ssoKeyParameterName)));
       if ($this->form->isValid())
       {
-        $values = $this->form->getValues();
+        $values = $this->form->getValues(); 
         $this->getUser()->signin($values['user'], array_key_exists('remember', $values) ? $values['remember'] : false);
 
+        $uri = $request->getUri();
+        $this->redirect($uri);
       }
       else
       {

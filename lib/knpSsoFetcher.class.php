@@ -45,6 +45,7 @@ class knpSsoFetcher
         $exception = $user['faultCode'].': '.$user['faultString'];
         sfContext::getInstance()->getLogger()->warning('{knpSsoFetcher} '.$exception);
       }
+      return false;
     }
     return $user;
   }

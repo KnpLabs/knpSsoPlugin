@@ -1,1 +1,1 @@
-Invalid SSO key.
+Authentification réussie.

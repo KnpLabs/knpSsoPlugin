@@ -33,6 +33,7 @@ class BaseknpSsoAuthActions extends sfActions
         $this->getUser()->signin($values['user'], array_key_exists('remember', $values) ? $values['remember'] : false);
 
         $uri = $request->getUri();
+        $uri = preg_replace('@'.$ssoKeyParameterName.'=[a-z0-9]+@', '', $uri);
         $this->redirect($uri);
       }
       else

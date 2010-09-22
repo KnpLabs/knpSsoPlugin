@@ -108,6 +108,9 @@ class knpSsoSecurityUser extends sfBasicSecurityUser
   {
     // signin
     $this->setAttribute('user', $user, 'knpSsoSecurityUser');
+    foreach($user as $key => $value) {
+      $this->setAttribute($key, $value, 'knpSsoSecurityUser');
+    }
     $this->setAuthenticated(true);
     $this->clearCredentials();
   }

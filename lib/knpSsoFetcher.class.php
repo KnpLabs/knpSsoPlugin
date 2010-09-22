@@ -31,7 +31,7 @@ class knpSsoFetcher
     }
     catch(Exception $e)
     {
-      if (true || sfConfig::get('sf_logging_enabled'))
+      if (sfConfig::get('sf_logging_enabled'))
       {
         sfContext::getInstance()->getLogger()->warning("{knpSsoFetcher} Exception thrown while fetching the SSO user $e");
       }
@@ -40,11 +40,9 @@ class knpSsoFetcher
     
     if(isset($user['faultString']))
     {
-      if (true || sfConfig::get('sf_logging_enabled'))
+      if (sfConfig::get('sf_logging_enabled'))
       {
         $exception = $user['faultCode'].': '.$user['faultString'];
-        echo '***'.$ssoKey.'***';
-        echo $exception;
         sfContext::getInstance()->getLogger()->warning('{knpSsoFetcher} '.$exception);
       }
       return false;

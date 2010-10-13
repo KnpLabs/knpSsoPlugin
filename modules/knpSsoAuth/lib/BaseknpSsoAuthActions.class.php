@@ -35,7 +35,7 @@ class BaseknpSsoAuthActions extends sfActions
         $uri = preg_replace('@'.$ssoKeyParameterName.'=[a-z0-9]+@i', '', $uri);
         $this->uri = $uri;
         $this->getResponse()->setHttpHeader('P3P', 'CP="CAO PSA OUR"');
-        $this->redirect($uri);
+        // $this->redirect($uri);
       }
       else
       {
